@@ -266,61 +266,14 @@ jobs:
 
 ---
 
-## 13) Using **Codex CLI** for Speed
-Install **Codex CLI** and let it make the edits and run commands under your supervision.
-
-### 13.1 Install
-```bash
-# macOS (Homebrew)
-brew install codex
-
-# or npm
-npm i -g @openai/codex
-```
-
-### 13.2 First run
-```bash
-codex init   # creates ~/.codex/config.toml
-codex help
-```
-
-### 13.3 Project-setup prompts (copy/paste)
-From repo root, you can ask Codex to scaffold and wire steps:
-
-```text
-Codex, in this repo:
-1) Create Starlight content pages (contacts, infrastructure, charity, docs, faq) with initial Ukrainian text placeholders.
-2) Update astro.config.mjs with Ukrainian locale, sidebar, and site title "Італійський квартал".
-3) Add public/_headers with basic security headers and public/_redirects with example rule from /old-faq to /faq (301).
-4) Add .nvmrc with "20", .editorconfig with 2-space indent.
-5) Create wrangler.toml with pages.project_name env var placeholders.
-6) Add .github/workflows/deploy.yml that builds on PR & main and deploys to Cloudflare Pages with preview links.
-7) Run `npm i` and `npm run build` to ensure the project builds.
-```
-
-For maintenance tasks:
-```text
-Codex, update the FAQ page:
-- Add section on waste sorting (bullet list).
-- Add "How to book the gazebo" steps referencing our Telegram bot link.
-Also compress images in src/assets to webp where safe, update references.
-```
-
-Safety tips:
-- Codex proposes changes; **review diffs** before committing.
-- Keep CI secrets in GitHub, not in code.
-- Pin Node version and lockfile to keep builds reproducible.
-
----
-
-## 14) Troubleshooting
+## 13) Troubleshooting
 - **Build passes locally, fails on CF:** ensure Node 20 in CI; clear lockfile issues with `npm ci`.
 - **404s on pretty URLs:** Starlight renders static routes; if you add SPA pages later, use `_redirects` or fallback handler.
 - **Large assets (>25 MiB):** store in R2 or external CDN and link.
 
 ---
 
-## 15) Future Enhancements
+## 14) Future Enhancements
 - Add **Decap CMS** for web editing (`/admin/`), GitHub OAuth app.
 - Add **sitemap.xml**, **robots.txt** (place in `public/`).
 - Add **search**: Starlight supports local search; for larger docs, consider Algolia DocSearch.
