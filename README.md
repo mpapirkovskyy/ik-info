@@ -1,49 +1,29 @@
-# Starlight Starter Kit: Basics
+# Italian Quarter – Community Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Static documentation site for the “Італійський квартал” residential community, built with Astro + Starlight. Content lives in Markdown so every pull request can be previewed on Cloudflare Pages before release.
 
-```
-npm create astro@latest -- --template starlight
-```
+## Project Layout
+- `src/content/docs/` – community-facing pages (Ukrainian content by design).
+- `docs/design/initial_plan.md` – implementation blueprint and decisions.
+- `docs/work/` – vertical-slice task briefs leading to the MVP.
+- `public/` – static assets such as the favicon, redirects, headers.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Local Development
+1. Use Node.js 20 (follow `.nvmrc` with `nvm use` if available).
+2. Install dependencies: `npm install`.
+3. Start the dev server: `npm run dev` (http://localhost:4321).
+4. Validate before pushing: `ASTRO_TELEMETRY_DISABLED=1 npm run build`.
 
-## 🚀 Project Structure
+## Continuous Deployment (Cloudflare Pages)
+- GitHub Actions workflow: `.github/workflows/deploy.yml` builds with Node 20 and uploads via `cloudflare/pages-action@v1`.
+- Required GitHub secrets:
+  - `CLOUDFLARE_API_TOKEN`
+  - `CLOUDFLARE_ACCOUNT_ID`
+  - `CLOUDFLARE_PROJECT_NAME`
+- Pull requests trigger preview deploys; pushes to `main` promote to production.
+- `wrangler.toml` declares the project and reads sensitive values from secrets/environment, so do not hard-code credentials.
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
-
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
-
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+## References
+- Live community booking site: https://ik-booking.easyweek.com.ua/
+- Astro documentation: https://docs.astro.build/
+- Starlight documentation: https://starlight.astro.build/

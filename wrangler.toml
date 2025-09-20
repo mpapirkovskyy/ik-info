@@ -1,0 +1,5 @@
+name = "ik-site-deploy"
+account_id = "${CLOUDFLARE_ACCOUNT_ID}"
+
+[pages]
+project_name = "${CLOUDFLARE_PROJECT_NAME}"
