@@ -5,7 +5,7 @@ export default defineConfig({
   site: 'https://italiyskyi-kvartal.example',
   integrations: [
     starlight({
-      title: 'Італійський квартал',
+      title: 'ЖК "Італійський квартал"',
       locales: {
         root: { label: 'Українська', lang: 'uk' }
       },
